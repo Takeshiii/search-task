@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { api } from "./services/api";
+import { api } from "./service/api";
 
 //создаем redux стор, подключаем к нему RTK Query и настраиваем для работы с api
 export const store = configureStore({

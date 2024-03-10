@@ -1,16 +1,26 @@
-import { useState } from "react";
 import { SearchForm } from "./components/SearchFrom/SearchForm";
-import { SearchContext } from "./components/SearchResults/SearchContext";
 import { SearchResults } from "./components/SearchResults/SearchResults";
-import { mockUsers } from "./mockUsers";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { FunctionComponent, useState, ChangeEvent } from "react";
+import { useDebounce } from "./hooks/useDebounce";
 
-export default function App() {
-  const [users] = useState(mockUsers);
+export const App: FunctionComponent = () => {
+  //использовали подход поднятие состояния(lifting up state) для упрощения обмена данными между компонентами
+  const [inputValue, setInputValue] = useState<string>("");
+
+  //используем дебаунс для предотвращения слишком частых запросов
+  const debouncedValue = useDebounce(inputValue, 500);
+
+  //обработчик для изменения значения инпута
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
 
   return (
-    <SearchContext.Provider value={{ users }}>
-      <SearchForm />
-      <SearchResults />
-    </SearchContext.Provider>
+    <Provider store={store}>
+      <SearchForm value={inputValue} onChange={handleChange} />
+      <SearchResults debouncedValue={debouncedValue} />
+    </Provider>
   );
-}
+};

@@ -1,0 +1,32 @@
+@use "../../assets/mixins/mixins.scss" as *;
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid var(--border) {
+      radius: 10px;
+    }
+
+    &[type="text"] {
+      width: 250px;
+
+      @include respond("small") {
+        width: 300px;
+      }
+    }
+
+    &[type="submit"] {
+      width: 150px;
+    }
+  }
+}

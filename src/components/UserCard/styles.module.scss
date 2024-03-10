@@ -1,0 +1,56 @@
+@use "../../assets/mixins/mixins.scss" as *;
+@use "../../assets/animations/animations.scss" as *;
+
+.userCard {
+  background-color: var(--userCardBackground);
+  padding: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 250px;
+  column-gap: 24px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  @include respond("small") {
+    width: 300px;
+    padding: 20px;
+  }
+
+  &Skeleton {
+    animation: 1s linear infinite waveKeyframe;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--userCardBackground),
+      transparent
+    );
+    background-size: 200%;
+  }
+}
+
+.userPic {
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--userPicBackground);
+  border-radius: 50%;
+
+  &Skeleton {
+    animation: 1s linear infinite waveKeyframe;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--userPicBackground),
+      var(--gainsboro),
+      transparent
+    );
+    background-size: 200%;
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}

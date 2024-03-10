@@ -1,0 +1,12 @@
+//миксин для адаптива на мобильных устройствах
+$breakpoints: (
+  "small": 600px,
+);
+
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+//все цвета вынесены в рут что бы с ними было удобнее работать
+:root {
+  --gainsboro: gainsboro;
+  --azure: azure;
+  --white: white;
+
+  --border: var(--gainsboro);
+  --userCardBackground: var(--azure);
+  --userPicBackground: var(--white);
+}
